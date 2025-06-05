@@ -1,4 +1,4 @@
-# My Gondwana Unit Rate Checker Project ✨ By Parastus Nghiilwamo
+#Gondwana Unit Rate Checker Project ✨ - by Parastus Nghiilwamo
 
 Good day, Parastus Nghiilwamo here  - I'm excited to share my Gondwana Unit & Rate Checker application. I built this tool to make it easy for users to check accommodation rates and availability by interacting with an external API.
 
