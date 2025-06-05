@@ -98,7 +98,7 @@ The PHP script at `public/api/index.php` serves as the backend.
 *   **Handles responses** and relays them (or any errors) back to the frontend in JSON format.
 *   Includes basic CORS headers to allow requests from the frontend.
 
-**Note on SSL (for `api/index.php`):** The cURL request within the PHP script currently has `CURLOPT_SSL_VERIFYPEER` and `CURLOPT_SSL_VERIFYHOST` set to `false`. This is often necessary for local development environments or when the external API's SSL certificate might not be recognized by the local CA bundle. In a production environment, it's recommended to ensure proper SSL verification.
+**Note on SSL (for `api/index.php`):** The cURL request within the PHP script now has `CURLOPT_SSL_VERIFYPEER` set to `true` and `CURLOPT_SSL_VERIFYHOST` set to `2` by default, enabling proper SSL certificate and hostname verification. This is the recommended secure configuration. In some specific local development environments with outdated CA bundles or particular SSL issues, these might need to be temporarily adjusted for testing, but the default is now secure.
 
 ## Code Quality (SonarQube)
 
