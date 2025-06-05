@@ -1,0 +1,8 @@
+{
+    "name": "applicant/gondwana-rates-api",
+    "description": "PHP API and UI for Gondwana Collection job assignment.",
+    "type": "project",
+    "require": {
+        "php": ">=7.4"
+    }
+}

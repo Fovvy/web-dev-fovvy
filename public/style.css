@@ -1,0 +1,124 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 550px;
+}
+
+h1 {
+    color: #1a237e; /* Dark blue */
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+#agesContainer input[type="number"] {
+    width: calc(33.333% - 10px); /* Adjust for spacing, 3 per row */
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#agesContainer input[type="number"]:nth-child(3n) {
+    margin-right: 0;
+}
+
+button[type="submit"] {
+    background-color: #28a745; /* Green */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838; /* Darker green */
+}
+
+#responseArea {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+}
+
+#responseArea h2 {
+    margin-top: 0;
+    color: #1a237e;
+    text-align: left;
+    font-size: 1.2rem;
+}
+
+#apiResponse {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+    max-height: 300px;
+    overflow-y: auto;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#loadingIndicator {
+    text-align: center;
+    padding: 10px;
+    color: #007bff;
+}
+
+#formattedResults {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #c3e6cb;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 4px;
+}
+
+#formattedResults p {
+    margin: 8px 0;
+}
+
+#formattedResults strong {
+    color: #0c5460;
+}

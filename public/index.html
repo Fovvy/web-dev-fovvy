@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gondwana Rates Checker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gondwana Unit Rate Checker</h1>
+        <form id="rateForm">
+            <div class="form-group">
+                <label for="unitName">Unit Name:</label>
+                <select id="unitName" name="unitName" required>
+                    <option value="" disabled selected>Select a Unit</option>
+                    <!-- Options will be populated by JS or hardcoded if few -->
+                    <option value="-2147483637">Standard Room (Test ID: -2147483637)</option>
+                    <option value="-2147483456">Deluxe Suite (Test ID: -2147483456)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="arrivalDate">Arrival Date (dd/mm/yyyy):</label>
+                <input type="text" id="arrivalDate" name="arrivalDate" placeholder="e.g., 25/12/2024" required>
+            </div>
+
+            <div class="form-group">
+                <label for="departureDate">Departure Date (dd/mm/yyyy):</label>
+                <input type="text" id="departureDate" name="departureDate" placeholder="e.g., 28/12/2024" required>
+            </div>
+
+            <div class="form-group">
+                <label for="occupants">Number of Occupants:</label>
+                <input type="number" id="occupants" name="occupants" min="1" value="1" required>
+            </div>
+
+            <div id="agesContainer" class="form-group">
+                <!-- Age input fields will be dynamically added here by JavaScript -->
+            </div>
+
+            <button type="submit">Check Rates</button>
+        </form>
+
+        <div id="responseArea">
+            <h2>Results</h2>
+            <div id="loadingIndicator" style="display:none;">Loading...</div>
+            <pre id="apiResponse"></pre>
+            <div id="formattedResults">
+                <p><strong>Unit Name:</strong> <span id="resultUnitName"></span></p>
+                <p><strong>Date Range:</strong> <span id="resultDateRange"></span></p>
+                <p><strong>Rate:</strong> <span id="resultRate"></span></p>
+                <p><strong>Availability:</strong> <span id="resultAvailability"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

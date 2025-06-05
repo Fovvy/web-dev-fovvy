@@ -1,0 +1,60 @@
+name: SonarCloud Analysis
+
+on:
+  push:
+    branches:
+      - main # Or your default/development branch
+  pull_request:
+    branches:
+      - main # Or your default/development branch
+    types: [opened, synchronize, reopened]
+  workflow_dispatch: # Allows manual triggering
+
+permissions:
+  pull-requests: read # Required to comment on PRs
+
+jobs:
+  sonarcloud:
+    name: SonarCloud Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # SonarCloud needs full history to assign issues correctly
+
+      # Optional: Setup PHP environment if your project needs specific versions or extensions
+      # - name: Setup PHP
+      #   uses: shivammathur/setup-php@v2
+      #   with:
+      #     php-version: '8.1' # Specify your PHP version
+      #     extensions: mbstring, dom, curl, json # Add extensions your project uses
+      #     tools: composer # If you use composer
+
+      # Optional: Install Composer dependencies if you have them
+      # - name: Install Composer dependencies
+      #   if: steps.setup-php.outputs.php-version != '' # Run only if PHP setup step ran
+      #   run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Provided by GitHub
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    # Must be created in SonarCloud and added to GitHub repository secrets
+        with:
+          # Additional arguments for the SonarScanner
+          args: >
+            -Dsonar.projectKey=YOUR_PROJECT_KEY 
+            -Dsonar.organization=YOUR_ORGANIZATION_KEY
+            -Dsonar.sources=public/api,public # Comma-separated paths to source code
+            -Dsonar.sourceEncoding=UTF-8
+            # -Dsonar.php.tests.reportPath=reports/phpunit.xml # If you have PHPUnit tests
+            # -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info # If you have JS test coverage
+
+# IMPORTANT:
+# 1. Replace 'YOUR_PROJECT_KEY' and 'YOUR_ORGANIZATION_KEY' with your actual keys from SonarCloud.
+# 2. Add SONAR_TOKEN, SONAR_PROJECT_KEY, and SONAR_ORGANIZATION_KEY as secrets in your GitHub repository settings
+#    (Settings > Secrets and variables > Actions > New repository secret).
+# 3. Adjust `sonar.sources` to point to the directories containing your PHP and JavaScript code.
+# 4. If you have a `sonar-project.properties` file in your repository, you might not need all these args here,
+#    as the action will pick it up automatically.

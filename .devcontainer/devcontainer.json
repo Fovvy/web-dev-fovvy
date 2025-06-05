@@ -1,0 +1,42 @@
+{
+  "name": "PHP Dev Container for Gondwana Assignment",
+  "image": "mcr.microsoft.com/devcontainers/php:8.2-bullseye", // Using a common PHP image
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+        "version": "lts" // For any frontend tools if needed
+    }
+    // You can add more features here like composer, specific PHP extensions, etc.
+    // "ghcr.io/devcontainers/features/php-homebrew:1": {
+    //     "version": "latest",
+    //     "extensions": "curl json mbstring pdo_mysql xml dom",
+    //     "composer": "latest"
+    // }
+  },
+  "forwardPorts": [8000],
+  "postCreateCommand": "php -v && composer --version", // Example command, adjust as needed
+  // "postAttachCommand": "php -S 0.0.0.0:8000 -t public", // Optionally auto-start server
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bmewburn.vscode-intelephense-client", // PHP IntelliSense
+        "xdebug.php-debug", // Xdebug for PHP
+        "dbaeumer.vscode-eslint", // For JavaScript linting
+        "esbenp.prettier-vscode", // Code formatter
+        "ms-azuretools.vscode-docker" // Docker extension
+      ],
+      "settings": {
+        "php.validate.executablePath": "/usr/local/bin/php",
+        "files.eol": "\n",
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true
+      }
+    }
+  },
+  "portsAttributes": {
+    "8000": {
+      "label": "PHP App (Run: php -S 0.0.0.0:8000 -t public)",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "remoteUser": "vscode" // Or 'root' if needed for certain installations
+}
