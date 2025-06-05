@@ -95,6 +95,8 @@ This repository is configured to run in GitHub Codespaces.
 3.  Once the Codespace is built, it should automatically forward the port used by PHP's built-in server (if you run it as described above from the terminal within Codespaces).
 
 ### SonarCloud Integration
+
+<!-- Triggering SonarCloud workflow -->
 1.  Create a free SonarCloud account at [SonarCloud Signup](https://www.sonarsource.com/products/sonarcloud/signup-free/) and link it to your GitHub account.
 2.  On SonarCloud, create a new project and select your GitHub repository.
 3.  In your GitHub repository settings, go to `Secrets and variables` -> `Actions`.
