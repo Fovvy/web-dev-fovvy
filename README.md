@@ -1,28 +1,28 @@
-# Gondwana Unit Rate Checker ✨ By Parastus Nghiilwamo
+# My Gondwana Unit Rate Checker Project ✨ By Parastus Nghiilwamo
 
-Welcome to the Gondwana Unit & Rate Checker! This application allows users to check accommodation rates and availability by interacting with an external API.
+Good day, Parastus Nghiilwamo here  - I'm excited to share my Gondwana Unit & Rate Checker application. I built this tool to make it easy for users to check accommodation rates and availability by interacting with an external API.
 
-💡This summary was confirmed by Parastus ✔️
+## My Journey & What I Built
 
-## Purpose of the platform
+My goal was to create a straightforward and user-friendly interface that simplifies querying unit rates. I decided to use **PHP** for the backend API, as it's well-suited for web tasks like this, and standard **HTML, CSS, and JavaScript** for the frontend to create an interactive experience.
 
-The primary purpose of this tool is to provide a user-friendly interface for querying unit rates based on selected criteria such as unit type, dates, and number of occupants. It acts as a bridge, simplifying the interaction with a more complex backend service.
+Here's a breakdown of the key functionalities I implemented:
 
-## Functionality
-
-*   **User-Friendly Form:** Input fields for Unit Name (selection), Arrival Date, Departure Date, and Number of Occupants.
-*   **Dynamic Age Inputs:** Based on the number of occupants, the form dynamically generates input fields for each person's age.
-*   **API Interaction:** Submits the collected data to a local PHP backend (`public/api/index.php`).
-*   **Data Transformation:** The PHP backend transforms the frontend data (e.g., date formats, guest age groups) to match the requirements of an external Gondwana Collection API.
-*   **Results Display:**
-    *   Shows the selected Unit Name and Date Range.
-    *   Displays the retrieved Rate.
-    *   Indicates Availability with a clear icon (✔️ for available, ❌ for not available, ⚠️ for errors).
-    *   Provides a toggle button (`</>`) to show/hide the raw JSON response from the API for debugging or detailed inspection.
-*   **Responsive Design:** The user interface is designed to adapt to different screen sizes for a good experience on desktop and mobile devices.
-*   **Glassmorphic UI:** Features a modern, warm, brown-themed glassmorphic design aesthetic.
+*   **User-Friendly Form:** I designed a simple form where users can select a Unit Name, input Arrival and Departure Dates, and specify the Number of Occupants.
+*   **Dynamic Age Inputs:** A neat feature I added is dynamic age input fields – these appear based on the number of occupants entered.
+*   **Backend API with PHP:** I developed a local PHP script (`public/api/index.php`) that the frontend communicates with.
+*   **Data Transformation Logic:** In the PHP backend, I wrote logic to transform the data from the frontend (like date formats and categorizing guests by age) into the format required by the external Gondwana Collection API.
+*   **Clear Results Display:**
+    *   The app clearly shows the selected Unit Name and Date Range.
+    *   It displays the retrieved Rate.
+    *   I used icons (✔️ for available, ❌ for not available, ⚠️ for errors) to make availability status immediately clear.
+    *   I also included a `</>` toggle button so users can see the raw JSON response from the API, which is handy for a detailed look or debugging.
+*   **Responsive & Modern UI:** I focused on making the interface responsive so it looks good and works well on different screen sizes. I opted for a warm, brown-themed glassmorphic design for a modern feel.
+*   **Favicon:** Added a `gondwana-favicon.png` for a complete look.
 
 ## Project Structure
+
+Here’s how I organized the project files:
 
 ```
 .
@@ -34,78 +34,83 @@ The primary purpose of this tool is to provide a user-friendly interface for que
 ├── .gitignore
 ├── public/
 │   ├── api/
-│   │   └── index.php     # The PHP API endpoint
-│   ├── images/
+│   │   └── index.php     # This is my PHP API endpoint
+│   ├── images/           # Contains logo, background, and favicon
+│   │   ├── gondwana-favicon.png
 │   │   ├── gondwana-logo.png
 │   │   └── savannah-background-4.jpg
-│   ├── index.html      # Main frontend page
-│   ├── script.js       # Frontend JavaScript logic
-│   └── style.css       # CSS for styling
+│   ├── index.html      # The main frontend page I created
+│   ├── script.js       # My frontend JavaScript logic
+│   └── style.css       # The CSS styles I wrote
 └── README.md
 ```
 
-## Setup and Running
+## Getting It Running
 
-This project is designed to be straightforward to set up and run, especially using environments like GitHub Codespaces or a local PHP server.
+I designed this project to be easy to set up. Here’s how you can get it running:
 
-### Prerequisites
+### What You'll Need:
 
-*   **PHP:** Version 7.4 or higher is recommended, with the `curl` and `json` extensions enabled (these are commonly enabled by default).
-*   **Web Browser:** Any modern web browser (e.g., Chrome, Firefox, Edge, Safari).
-*   **Git:** For cloning the repository (optional if downloading as a ZIP).
+*   **PHP:** I recommend version 7.4 or higher. Make sure you have the `curl` and `json` extensions enabled (they usually are by default).
+*   **Web Browser:** Any modern browser will do.
+*   **Git:** If you want to clone the repository.
 
-### Running Locally
+### Running It Locally:
 
 1.  **Get the Code:**
-    *   Clone the repository: `git clone <repository-url>`
-    *   Or download and extract the ZIP file.
-2.  **Navigate to the `public` Directory:**
-    Open your terminal or command prompt and change to the `public` directory within the project:
+    *   You can clone the repository: `git clone <repository-url>`
+    *   Or just download and extract the ZIP file.
+2.  **Go to the `public` Directory:**
+    Using your terminal, navigate into the `public` directory:
     ```bash
     cd path/to/project/public
     ```
-3.  **Start the PHP Built-in Web Server:**
-    From within the `public` directory, run:
+3.  **Start the PHP Server:**
+    From inside the `public` directory, I use PHP's built-in server:
     ```bash
     php -S localhost:8000
     ```
-    This will start a web server. The `index.html` file will be served as the main page, and the API endpoint will be accessible at `http://localhost:8000/api/` (e.g., `http://localhost:8000/api/index.php`).
-4.  **Open in Browser:**
-    Open your web browser and go to `http://localhost:8000`.
+    This starts a web server, and my `index.html` will be the main page. The API will be at `http://localhost:8000/api/`.
+4.  **Open in Your Browser:**
+    Go to `http://localhost:8000`.
 
-### Running with GitHub Codespaces
-
-This repository can be easily run in GitHub Codespaces, providing a pre-configured development environment.
+### Running with GitHub Codespaces (My Preferred Way for Easy Setup!):
 
 1.  **Open in Codespaces:**
-    *   Navigate to the repository on GitHub.
-    *   Click the `Code` button.
-    *   Select the `Codespaces` tab.
-    *   Click `Create codespace on main` (or your desired branch).
+    *   On the GitHub repository page, click `Code`, go to the `Codespaces` tab, and create a new codespace.
 2.  **Run the Application:**
-    *   Once the Codespace is ready, a terminal should be available.
-    *   Navigate to the `public` directory: `cd public`
-    *   Start the PHP server: `php -S localhost:8000 -t .` (The `-t .` ensures it serves from the current directory, which is `public`).
-    *   Codespaces should automatically detect the running application and provide a button or link to open it in a browser tab (Port Forwarding).
+    *   Once the Codespace is ready, open the terminal.
+    *   Navigate to `public`: `cd public`
+    *   Start the PHP server: `php -S localhost:8000 -t .` (the `-t .` tells it to serve from the current directory).
+    *   Codespaces usually detects the running app and gives you a link to open it.
 
-## API Endpoint (`public/api/index.php`)
+## My Backend API (`public/api/index.php`)
 
-The PHP script at `public/api/index.php` serves as the backend.
-*   **Accepts POST requests** with a JSON payload.
-*   **Validates** the incoming data.
-*   **Transforms** the data to the format required by the external Gondwana API (e.g., date formats, guest age categorization).
-*   **Communicates** with the external API: `https://dev.gondwana-collection.com/Web-Store/Rates/Rates.php` using cURL.
-*   **Handles responses** and relays them (or any errors) back to the frontend in JSON format.
-*   Includes basic CORS headers to allow requests from the frontend.
+I wrote the PHP script at `public/api/index.php` to handle the backend logic:
 
-**Note on SSL (for `api/index.php`):** The cURL request within the PHP script now has `CURLOPT_SSL_VERIFYPEER` set to `true` and `CURLOPT_SSL_VERIFYHOST` set to `2` by default, enabling proper SSL certificate and hostname verification. This is the recommended secure configuration. In some specific local development environments with outdated CA bundles or particular SSL issues, these might need to be temporarily adjusted for testing, but the default is now secure.
+*   It **accepts POST requests** with a JSON payload from the frontend.
+*   It **validates** the incoming data to ensure it's what I expect.
+*   It **transforms** the data (like date formats and guest ages) for the external Gondwana API.
+*   It **communicates** with the external API (`https://dev.gondwana-collection.com/Web-Store/Rates/Rates.php`) using cURL.
+*   It then **handles the responses** and sends them (or any errors) back to the frontend in JSON format.
+*   I also included basic CORS headers.
 
-## Code Quality (SonarQube)
+**An Important Note on SSL in my API:**
+For the cURL request in my PHP script, I've set `CURLOPT_SSL_VERIFYPEER` to `true` and `CURLOPT_SSL_VERIFYHOST` to `2`. This enables proper SSL verification, which is crucial for security. While this is the best practice, I know that sometimes in specific local development setups, these might need temporary adjustments if there are issues with CA bundles, but the default is secure.
 
-This project aims for clean and maintainable code. If integrating with SonarQube:
-*   Ensure your SonarQube instance is configured to analyze PHP, JavaScript, HTML, and CSS.
-*   The `.github/workflows/sonarcloud.yml` (if present and configured with your `SONAR_TOKEN`) provides an example of how to integrate with SonarCloud for automated analysis.
-*   Strive for clear logic, meaningful variable names, and appropriate comments where the code's intent isn't immediately obvious.
+## Code Quality & SonarQube Integration
 
-I hope you are satisfied with my Work! ✨✨✨
+I aimed for clean and maintainable code. I also integrated SonarCloud to keep an eye on quality:
+
+*   I set up SonarQube to analyze my PHP, JavaScript, HTML, and CSS.
+*   The `.github/workflows/sonarcloud.yml` file shows how I integrated SonarCloud for automated analysis.
+
+### My Notes on the SonarQube Quality Gate:
+
+*   **Code Coverage:** The default "Sonar way" Quality Gate in SonarCloud requires 80% coverage on new code. Currently, this project doesn't include an automated test suite, which means it shows 0% coverage, and this Quality Gate condition isn't met. I recognize that implementing unit and integration tests (e.g., using PHPUnit for the backend and a JavaScript testing framework for the frontend) is an important step for future improvement. Due to SonarCloud plan limitations, I couldn't modify the default Quality Gate for this project.
+*   **Security Hotspots:** I reviewed any reported Security Hotspots. For instance, the permissive CORS policy (`Access-Control-Allow-Origin: *`) was flagged. For the development and assessment environment (local/Codespaces) of this project, I deemed this acceptable. I've left a `TODO` comment in the code to remind myself to implement a more restrictive policy for any future production deployment.
+
+I hope this gives you a good overview of my work and how to get the project up and running!
+
 ---
+Parastus Nghiilwamo ✨
