@@ -109,9 +109,11 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Content-Length: ' . strlen(json_encode($transformedPayload))
 ]);
 
-// For local development with potential SSL cert issues with the external API:
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+// Enable SSL peer and host verification for security.
+// In some local development environments with outdated CA bundles or specific SSL issues,
+// these might need to be temporarily set to false for testing, but should be true/2 for production.
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
 curl_setopt($ch, CURLOPT_TIMEOUT, 30); // 30 seconds timeout
 
 $externalApiResponse = curl_exec($ch);
