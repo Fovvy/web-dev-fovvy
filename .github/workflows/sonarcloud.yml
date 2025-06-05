@@ -46,7 +46,7 @@ jobs:
           args: >
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
             -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION_KEY }}
-            -Dsonar.sources=public/api,public # Comma-separated paths to source code
+            -Dsonar.sources=public # Source code directory
             -Dsonar.sourceEncoding=UTF-8
             # -Dsonar.php.tests.reportPath=reports/phpunit.xml # If you have PHPUnit tests
             # -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info # If you have JS test coverage
