@@ -1,111 +1,111 @@
-# Job Application Assignment - PHP REST API & UI
+# Gondwana Unit Rate Checker ✨ By Parastus Nghiilwamo
 
-This project is a solution for the job application assignment, involving a PHP RESTful API and a simple frontend UI to interact with it.
+Welcome to the Gondwana Unit & Rate Checker! This application allows users to check accommodation rates and availability by interacting with an external API.
 
-## Objective
-- Develop a restful API using PHP.
-- Construct a simple UI to interact with the API.
+💡This summary was confirmed by Parastus ✔️
+
+## Purpose of the platform
+
+The primary purpose of this tool is to provide a user-friendly interface for querying unit rates based on selected criteria such as unit type, dates, and number of occupants. It acts as a bridge, simplifying the interaction with a more complex backend service.
+
+## Functionality
+
+*   **User-Friendly Form:** Input fields for Unit Name (selection), Arrival Date, Departure Date, and Number of Occupants.
+*   **Dynamic Age Inputs:** Based on the number of occupants, the form dynamically generates input fields for each person's age.
+*   **API Interaction:** Submits the collected data to a local PHP backend (`public/api/index.php`).
+*   **Data Transformation:** The PHP backend transforms the frontend data (e.g., date formats, guest age groups) to match the requirements of an external Gondwana Collection API.
+*   **Results Display:**
+    *   Shows the selected Unit Name and Date Range.
+    *   Displays the retrieved Rate.
+    *   Indicates Availability with a clear icon (✔️ for available, ❌ for not available, ⚠️ for errors).
+    *   Provides a toggle button (`</>`) to show/hide the raw JSON response from the API for debugging or detailed inspection.
+*   **Responsive Design:** The user interface is designed to adapt to different screen sizes for a good experience on desktop and mobile devices.
+*   **Glassmorphic UI:** Features a modern, warm, brown-themed glassmorphic design aesthetic.
 
 ## Project Structure
 
 ```
 .
-├── .devcontainer/       # For GitHub Codespaces configuration
+├── .devcontainer/        # Optional: For GitHub Codespaces configuration
 │   └── devcontainer.json
 ├── .github/
-│   └── workflows/
-│       └── sonarcloud.yml # SonarCloud GitHub Action
+│   └── workflows/        # Optional: For CI/CD like SonarCloud
+│       └── sonarcloud.yml
 ├── .gitignore
-├── api/
-│   └── rates.php        # The PHP REST API endpoint
-├── public/                # Frontend files
-│   ├── index.html
-│   ├── script.js
-│   └── style.css
+├── public/
+│   ├── api/
+│   │   └── index.php     # The PHP API endpoint
+│   ├── images/
+│   │   ├── gondwana-logo.png
+│   │   └── savannah-background-4.jpg
+│   ├── index.html      # Main frontend page
+│   ├── script.js       # Frontend JavaScript logic
+│   └── style.css       # CSS for styling
 └── README.md
 ```
 
-## Backend API (`api/rates.php`)
-
-The API ingests a JSON payload, transforms it, queries an external rates API, and relays the response.
-
-**Input Payload (to `api/rates.php`):**
-```json
-{
-  "Unit Name": "String (e.g., one of the test Unit Type IDs like '-2147483637')",
-  "Arrival": "<dd/mm/yyyy>",
-  "Departure": "<dd/mm/yyyy>",
-  "Occupants": "<int>",
-  "Ages": ["<int array>"]
-}
-```
-
-**External API Payload (transformed by `api/rates.php`):
-```json
-{
-  "Unit Type ID": "<int>",
-  "Arrival": "yyyy-mm-dd",
-  "Departure": "yyyy-mm-dd",
-  "Guests": [
-    { "Age Group": "Adult" },
-    { "Age Group": "Child" }
-  ]
-}
-```
-
-- **Unit Type IDs for testing:** `[-2147483637, -2147483456]`
-- **External API Endpoint:** `https://dev.gondwana-collection.com/WebStore/Rates/Rates.php`
-
-## Frontend
-
-A simple HTML, CSS, and JavaScript frontend in the `public/` directory allows users to:
-- Input booking details (Unit Name/ID, dates, occupants, ages).
-- Send the request to the local PHP API.
-- View the results: Unit Name, Rate, Date Range, Availability.
-
 ## Setup and Running
 
-### Prerequisites
-- PHP (version 7.4 or higher recommended) with `curl` and `json` extensions enabled.
-- A web server (Apache, Nginx, or PHP's built-in server).
-- Git.
+This project is designed to be straightforward to set up and run, especially using environments like GitHub Codespaces or a local PHP server.
 
-### Local Setup
-1.  **Clone the repository:**
+### Prerequisites
+
+*   **PHP:** Version 7.4 or higher is recommended, with the `curl` and `json` extensions enabled (these are commonly enabled by default).
+*   **Web Browser:** Any modern web browser (e.g., Chrome, Firefox, Edge, Safari).
+*   **Git:** For cloning the repository (optional if downloading as a ZIP).
+
+### Running Locally
+
+1.  **Get the Code:**
+    *   Clone the repository: `git clone <repository-url>`
+    *   Or download and extract the ZIP file.
+2.  **Navigate to the `public` Directory:**
+    Open your terminal or command prompt and change to the `public` directory within the project:
     ```bash
-    git clone <your-repo-url>
-    cd <repository-name>
+    cd path/to/project/public
     ```
-2.  **Run with PHP's built-in server:**
-    Navigate to the `public/` directory and start the server:
+3.  **Start the PHP Built-in Web Server:**
+    From within the `public` directory, run:
     ```bash
-    cd public
     php -S localhost:8000
     ```
-    Then open `http://localhost:8000` in your browser.
-    The API will be accessible at `http://localhost:8000/../api/rates.php`. Ensure your frontend `script.js` points to the correct API path relative to its location or use an absolute path if needed.
+    This will start a web server. The `index.html` file will be served as the main page, and the API endpoint will be accessible at `http://localhost:8000/api/` (e.g., `http://localhost:8000/api/index.php`).
+4.  **Open in Browser:**
+    Open your web browser and go to `http://localhost:8000`.
 
-    Alternatively, configure a virtual host with Apache/Nginx to point to the `public` directory as the document root, and ensure requests to `/api/` are routed to the `api/` directory (e.g., via `.htaccess` or server config if you move `api` inside `public` or use a router).
-    For simplicity with the current structure and PHP's built-in server, the `script.js` will use a relative path like `../api/rates.php`.
+### Running with GitHub Codespaces
 
-### GitHub Codespaces
-This repository is configured to run in GitHub Codespaces.
-1.  Open the repository in GitHub.
-2.  Click on `Code` -> `Open with Codespaces` -> `New codespace`.
-3.  Once the Codespace is built, it should automatically forward the port used by PHP's built-in server (if you run it as described above from the terminal within Codespaces).
+This repository can be easily run in GitHub Codespaces, providing a pre-configured development environment.
 
-### SonarCloud Integration
+1.  **Open in Codespaces:**
+    *   Navigate to the repository on GitHub.
+    *   Click the `Code` button.
+    *   Select the `Codespaces` tab.
+    *   Click `Create codespace on main` (or your desired branch).
+2.  **Run the Application:**
+    *   Once the Codespace is ready, a terminal should be available.
+    *   Navigate to the `public` directory: `cd public`
+    *   Start the PHP server: `php -S localhost:8000 -t .` (The `-t .` ensures it serves from the current directory, which is `public`).
+    *   Codespaces should automatically detect the running application and provide a button or link to open it in a browser tab (Port Forwarding).
 
-<!-- Triggering SonarCloud workflow -->
-1.  Create a free SonarCloud account at [SonarCloud Signup](https://www.sonarsource.com/products/sonarcloud/signup-free/) and link it to your GitHub account.
-2.  On SonarCloud, create a new project and select your GitHub repository.
-3.  In your GitHub repository settings, go to `Secrets and variables` -> `Actions`.
-4.  Add the following repository secrets (obtained from SonarCloud when setting up the project):
-    *   `SONAR_TOKEN`: Your SonarCloud project's analysis token.
-    *   `SONAR_HOST_URL`: Typically `https://sonarcloud.io`.
+## API Endpoint (`public/api/index.php`)
 
-The `.github/workflows/sonarcloud.yml` file defines a GitHub Action that will run SonarCloud analysis on every push and pull request to the `main` branch.
+The PHP script at `public/api/index.php` serves as the backend.
+*   **Accepts POST requests** with a JSON payload.
+*   **Validates** the incoming data.
+*   **Transforms** the data to the format required by the external Gondwana API (e.g., date formats, guest age categorization).
+*   **Communicates** with the external API: `https://dev.gondwana-collection.com/Web-Store/Rates/Rates.php` using cURL.
+*   **Handles responses** and relays them (or any errors) back to the frontend in JSON format.
+*   Includes basic CORS headers to allow requests from the frontend.
 
-## Important Notes for Assignment
-- Remember to share your GitHub repository with `GCNam-DevTeam` and `web-dev-github-username`.
-- Ensure your code is clean, well-commented, and follows PHP best practices.
+**Note on SSL (for `api/index.php`):** The cURL request within the PHP script currently has `CURLOPT_SSL_VERIFYPEER` and `CURLOPT_SSL_VERIFYHOST` set to `false`. This is often necessary for local development environments or when the external API's SSL certificate might not be recognized by the local CA bundle. In a production environment, it's recommended to ensure proper SSL verification.
+
+## Code Quality (SonarQube)
+
+This project aims for clean and maintainable code. If integrating with SonarQube:
+*   Ensure your SonarQube instance is configured to analyze PHP, JavaScript, HTML, and CSS.
+*   The `.github/workflows/sonarcloud.yml` (if present and configured with your `SONAR_TOKEN`) provides an example of how to integrate with SonarCloud for automated analysis.
+*   Strive for clear logic, meaningful variable names, and appropriate comments where the code's intent isn't immediately obvious.
+
+I hope you are satisfied with my Work! ✨✨✨
+---

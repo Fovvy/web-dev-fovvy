@@ -5,52 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gondwana Rates Checker</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/gondwana-favicon.png">
 </head>
 <body>
     <div class="container">
-        <h1>Gondwana Unit Rate Checker</h1>
-        <form id="rateForm">
-            <div class="form-group">
-                <label for="unitName">Unit Name:</label>
-                <select id="unitName" name="unitName" required>
-                    <option value="" disabled selected>Select a Unit</option>
-                    <!-- Options will be populated by JS or hardcoded if few -->
-                    <option value="-2147483637">Standard Room (Test ID: -2147483637)</option>
-                    <option value="-2147483456">Deluxe Suite (Test ID: -2147483456)</option>
-                </select>
+        <img src="images/gondwana-logo.png" alt="Gondwana Collection Logo" class="logo-image">
+        <h1>Enquire about a Unit below:</h1>
+        <div class="content-wrapper">
+            <div class="form-column">
+                <form id="rateForm">
+                    <div class="form-group">
+                        <label for="unitName">Unit Name:</label>
+                        <select id="unitName" name="unitName" required>
+                            <option value="" disabled selected>Select a Unit</option>
+                            <option value="-2147483637">Standard Room</option>
+                            <option value="-2147483456">Deluxe Suite</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="arrivalDate">Arrival Date:</label>
+                        <input type="date" id="arrivalDate" name="arrivalDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="departureDate">Departure Date:</label>
+                        <input type="date" id="departureDate" name="departureDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="occupants">Number of Occupants:</label>
+                        <input type="number" id="occupants" name="occupants" min="1" value="1" required>
+                    </div>
+
+                    <div id="agesContainer" class="form-group">
+                    </div>
+
+                    <button type="submit">Check Rates</button>
+                </form>
             </div>
 
-            <div class="form-group">
-                <label for="arrivalDate">Arrival Date (dd/mm/yyyy):</label>
-                <input type="text" id="arrivalDate" name="arrivalDate" placeholder="e.g., 25/12/2024" required>
-            </div>
-
-            <div class="form-group">
-                <label for="departureDate">Departure Date (dd/mm/yyyy):</label>
-                <input type="text" id="departureDate" name="departureDate" placeholder="e.g., 28/12/2024" required>
-            </div>
-
-            <div class="form-group">
-                <label for="occupants">Number of Occupants:</label>
-                <input type="number" id="occupants" name="occupants" min="1" value="1" required>
-            </div>
-
-            <div id="agesContainer" class="form-group">
-                <!-- Age input fields will be dynamically added here by JavaScript -->
-            </div>
-
-            <button type="submit">Check Rates</button>
-        </form>
-
-        <div id="responseArea">
-            <h2>Results</h2>
-            <div id="loadingIndicator" style="display:none;">Loading...</div>
-            <pre id="apiResponse"></pre>
-            <div id="formattedResults">
-                <p><strong>Unit Name:</strong> <span id="resultUnitName"></span></p>
-                <p><strong>Date Range:</strong> <span id="resultDateRange"></span></p>
-                <p><strong>Rate:</strong> <span id="resultRate"></span></p>
-                <p><strong>Availability:</strong> <span id="resultAvailability"></span></p>
+            <div class="results-column">
+                <div id="responseArea">
+                    <h2>Results</h2>
+                    <div id="loadingIndicator" style="display:none;">Loading...</div>
+                    <div id="formattedResults">
+                        <p><strong>Unit Name:</strong> <span id="resultUnitName"></span></p>
+                        <p><strong>Date Range:</strong> <span id="resultDateRange"></span></p>
+                        <p><strong>Rate:</strong> <span id="resultRate"></span></p>
+                        <p><strong>Availability:</strong> <span id="resultAvailability"></span></p>
+                    </div>
+                    <button id="toggleJsonResponseBtn" class="toggle-json-btn">&lt;/&gt;</button>
+                    <pre id="apiResponse" style="display:none;"></pre>
+                </div>
             </div>
         </div>
     </div>

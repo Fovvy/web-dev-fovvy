@@ -1,56 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Nunito', sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #f0f2f5;
-    color: #333;
+    background-image: url('images/savannah-background-4.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    color: #795548;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
+    font-size: 16px; /* Base font size for better rem calculations */
 }
 
 .container {
-    background: #fff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 253, 248, 0.70);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 30px 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(109, 76, 65, 0.2);
     width: 100%;
-    max-width: 550px;
+    max-width: 900px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.logo-image {
+    display: block;
+    margin: 0 auto 15px auto;
+    max-height: 170px;
 }
 
 h1 {
-    color: #1a237e; /* Dark blue */
+    color: #5D4037;
     text-align: center;
     margin-bottom: 25px;
+    font-size: 2.2rem; /* Using rem for scalability */
+    font-weight: 700;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.form-column {
+    flex: 1;
+    min-width: 300px;
+    padding-right: 30px;
+    border-right: 1px dashed rgba(161, 136, 127, 0.5);
+}
+
+.results-column {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column; /* Important for button positioning */
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     font-weight: 600;
-    color: #333;
+    color: #6D4C41;
+    font-size: 1rem;
 }
 
 .form-group input[type="text"],
 .form-group input[type="number"],
+.form-group input[type="date"],
 .form-group select {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 10px 12px;
+    border: 1px solid #BCAAA4;
+    border-radius: 8px;
     box-sizing: border-box;
-    font-size: 1rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    background-color: rgba(255, 253, 250, 0.85);
+    color: #5D4037;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus,
+.form-group input[type="date"]:focus,
+.form-group select:focus {
+    border-color: #795548;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(121, 85, 72, 0.15);
 }
 
 #agesContainer input[type="number"] {
-    width: calc(33.333% - 10px); /* Adjust for spacing, 3 per row */
-    margin-right: 10px;
-    margin-bottom: 10px;
+    width: calc(33.333% - 10px);
+    margin-right: 12px;
+    margin-bottom: 12px;
 }
 
 #agesContainer input[type="number"]:nth-child(3n) {
@@ -58,67 +112,178 @@ h1 {
 }
 
 button[type="submit"] {
-    background-color: #28a745; /* Green */
+    background-color: #795548;
     color: white;
     padding: 12px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
     font-size: 1.1rem;
     width: 100%;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-top: 10px;
+}
+
+.toggle-json-btn {
+    background-color: #A1887F;
+    color: #FFFFFF;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 1;
+    width: auto;
+    min-width: 45px;
+    text-align: center;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin-top: auto; /* Pushes button to the bottom of results-column */
+    align-self: center;
+    display: none; /* Initially hidden - JS controls visibility */
 }
 
 button[type="submit"]:hover {
-    background-color: #218838; /* Darker green */
+    background-color: #5D4037;
+    transform: translateY(-1px);
+}
+
+.toggle-json-btn:hover {
+    background-color: #8D6E63;
+    transform: translateY(-1px);
+}
+
+button[type="submit"]:active,
+.toggle-json-btn:active {
+    transform: translateY(0px);
 }
 
 #responseArea {
-    margin-top: 30px;
-    padding: 15px;
-    background-color: #e9ecef;
-    border-radius: 4px;
-    border: 1px solid #ced4da;
+    padding: 18px;
+    background-color: rgba(248, 244, 236, 0.75);
+    border-radius: 10px;
+    border: 1px solid #D7CCC8;
+    flex-grow: 1; /* Allows this area to grow, pushing button down */
+    margin-bottom: 15px;
 }
 
 #responseArea h2 {
     margin-top: 0;
-    color: #1a237e;
+    color: #5D4037;
     text-align: left;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 12px;
 }
 
 #apiResponse {
     white-space: pre-wrap;
     word-wrap: break-word;
-    background-color: #f8f9fa;
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #dee2e6;
-    max-height: 300px;
+    background-color: rgba(253, 250, 247, 0.9);
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #E0E0E0;
+    max-height: 180px;
     overflow-y: auto;
     font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+    color: #4E342E;
+    margin-top: 10px;
 }
 
 #loadingIndicator {
     text-align: center;
-    padding: 10px;
-    color: #007bff;
+    padding: 15px;
+    color: #795548;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 #formattedResults {
-    margin-top: 15px;
-    padding: 10px;
-    border: 1px solid #c3e6cb;
-    background-color: #d4edda;
-    color: #155724;
-    border-radius: 4px;
+    padding: 8px 0;
+    border: none;
+    background-color: transparent;
+    color: #6D4C41;
+    font-size: 1rem;
 }
 
 #formattedResults p {
-    margin: 8px 0;
+    margin: 6px 0;
 }
 
 #formattedResults strong {
-    color: #0c5460;
+    color: #5D4037;
+    font-weight: 700;
+}
+
+.availability-icon {
+    font-size: 1.1rem;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+    .content-wrapper {
+        flex-direction: column;
+    }
+    .form-column,
+    .results-column {
+        width: 100%;
+        max-width: 100%;
+    }
+    .form-column {
+        border-right: none; /* Remove border when stacked */
+        padding-right: 0; /* Remove padding when stacked */
+    }
+    #responseArea {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    .container {
+        padding: 20px 25px;
+    }
+    h1 {
+        font-size: 1.9rem;
+    }
+    .form-group label {
+        font-size: 0.95rem;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="date"],
+    .form-group select {
+        font-size: 0.9rem;
+        padding: 8px 10px;
+    }
+    #agesContainer input[type="number"] {
+        width: calc(50% - 6px);
+        margin-right: 8px;
+    }
+    #agesContainer input[type="number"]:nth-child(2n) { /* Ensure even spacing for 2-per-row */
+        margin-right: 0;
+    }
+    button[type="submit"] {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+    .toggle-json-btn {
+        font-size: 1.1rem;
+        padding: 5px 8px;
+        margin-top: 10px;
+        align-self: center;
+    }
+    #responseArea h2 {
+        font-size: 1.3rem;
+    }
+    #formattedResults {
+        font-size: 0.95rem;
+    }
 }
