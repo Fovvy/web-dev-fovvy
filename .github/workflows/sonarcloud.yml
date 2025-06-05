@@ -44,8 +44,8 @@ jobs:
         with:
           # Additional arguments for the SonarScanner
           args: >
-            -Dsonar.projectKey=YOUR_PROJECT_KEY 
-            -Dsonar.organization=YOUR_ORGANIZATION_KEY
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION_KEY }}
             -Dsonar.sources=public/api,public # Comma-separated paths to source code
             -Dsonar.sourceEncoding=UTF-8
             # -Dsonar.php.tests.reportPath=reports/phpunit.xml # If you have PHPUnit tests
