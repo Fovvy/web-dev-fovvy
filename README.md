@@ -2,7 +2,7 @@
 
 Good day, Parastus Nghiilwamo here  - I'm excited to share my Gondwana Unit & Rate Checker application. I built this tool to make it easy for users to check accommodation rates and availability by interacting with an external API.
 
-## My Journey & What I Built
+## What I Built
 
 My goal was to create a straightforward and user-friendly interface that simplifies querying unit rates. I decided to use **PHP** for the backend API, as it's well-suited for web tasks like this, and standard **HTML, CSS, and JavaScript** for the frontend to create an interactive experience.
 
